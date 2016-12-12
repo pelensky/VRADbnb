@@ -8,7 +8,7 @@ class User
     include DataMapper::Resource
 
     property :id, Serial
-    property :email, String, required: true
+    property :email, String, required: true, unique: true
     property :password_digest, Text
     property :password_confirmation, Text
 
@@ -22,6 +22,7 @@ class User
 
   validates_confirmation_of :password
   validates_format_of :email, as: :email_address
+  validates_uniqueness_of :email
 end
 
 DataMapper.setup(:default, "postgres://localhost/vradbnb_#{ENV['RACK_ENV']}")
