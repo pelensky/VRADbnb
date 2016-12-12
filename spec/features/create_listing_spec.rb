@@ -36,4 +36,16 @@ feature "Creating a new listing" do
     expect(page).to have_content("Price must be an integer")
   end
 
+  scenario "Owner attempts to submit a listing with incorrect start date format" do
+    new_listing(start_date:"now")
+    expect(page).to have_content("Please enter start date in correct format")
+  end
+
+  scenario "Owner attempts to submit a listing with incorrect end date format" do
+    new_listing(start_date:"now")
+    expect(page).to have_content("Please enter start date in correct format")
+  end
+
+
+
 end
