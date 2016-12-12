@@ -1,6 +1,7 @@
 feature "signup" do
   scenario "user can sign up" do
     sign_up
+    expect(page).to have_content "Aloha, test@test.com"
     expect(page).to have_current_path('/listings/new')
   end
 
