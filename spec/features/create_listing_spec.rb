@@ -1,5 +1,4 @@
 feature "Creating a new listing" do
-
   scenario "Owner submits a listing for their space" do
     visit '/listings/new'
 

@@ -12,8 +12,6 @@ class Listing
   property :start_date, String
   property :end_date, String
 
-
-
 end
 
 

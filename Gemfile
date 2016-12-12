@@ -7,6 +7,7 @@ gem "rspec-sinatra"
 gem "rspec"
 gem "capybara"
 gem "selenium-webdriver"
-gem 'data_mapper'
+gem "data_mapper"
+gem "bcrypt"
 gem 'dm-postgres-adapter'
-gem 'database-cleaner'
+gem 'database_cleaner'
