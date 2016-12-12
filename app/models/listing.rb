@@ -8,10 +8,10 @@ class Listing
 
   property :id, Serial
   property :name, String, required: true
-  property :description, Text
-  property :price, Integer
-  property :start_date, String
-  property :end_date, String
+  property :description, Text, required: true
+  property :price, Integer, required: true
+  property :start_date, String, required: true
+  property :end_date, String, required: true
 
 end
 
