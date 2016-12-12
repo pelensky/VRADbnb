@@ -1,12 +1,14 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative './models/listing.rb'
 require_relative './models/user.rb'
 
 class VRADBnB < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
+  register Sinatra::Flash
 
   get '/' do
 
@@ -19,9 +21,13 @@ class VRADBnB < Sinatra::Base
 
   post '/signup' do
     user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-    user.save
-    session[:user_id] = user.id
-    redirect '/listings/new'
+    if user.save
+      session[:user_id] = user.id
+      redirect '/listings/new'
+    else
+      flash.now[:notice] = 'Password and confirmation password do not match'
+      erb :'signup'
+    end
   end
 
   get '/listings/new' do
