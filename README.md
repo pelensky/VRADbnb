@@ -32,7 +32,11 @@ As an owner,
 So that I can plan my social calendar,
 I want to specify when my space is available
 
-As an renter,
+As a renter,
+So that I can choose somewhere to stay,
+I want to see a list of available spaces
+
+As a renter,
 So that I can have somewhere to stay,
 I want to request to rent a space for one night
 
