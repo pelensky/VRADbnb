@@ -6,14 +6,19 @@ feature "Creating a new listing" do
     expect(page).to have_content("Sunny palace")
   end
 
-  scenario "Owner submits a listing without a name" do
+  scenario "Owner attempts to submit a listing without a name" do
     new_listing(name:"")
     expect(page).to have_content("Name must not be blank")
   end
 
-  scenario "Owner submits a listing without a description" do
+  scenario "Owner attempts to submit a listing without a description" do
     new_listing(description:"")
     expect(page).to have_content("Description must not be blank")
+  end
+
+  scenario "Owner attempts to submit a listing without a price" do
+    new_listing(price:"")
+    expect(page).to have_content("Price must not be blank")
   end
 
 end
