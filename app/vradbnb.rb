@@ -6,6 +6,7 @@ require_relative './models/user.rb'
 
 class VRADBnB < Sinatra::Base
   enable :sessions
+  set :session_secret, 'super secret'
 
   get '/' do
 
@@ -17,7 +18,8 @@ class VRADBnB < Sinatra::Base
   end
 
   post '/signup' do
-    user = User.create(email: params[:email], password: params[:password], confirm_password: params[:confirm_password])
+    user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    user.save
     session[:user_id] = user.id
     redirect '/listings/new'
   end
@@ -34,6 +36,11 @@ class VRADBnB < Sinatra::Base
     listing.save
   end
 
+helpers do
+  def current_user
+    @current_user ||= User.get(session[:user_id])
+  end
+end
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
