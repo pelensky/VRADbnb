@@ -1,5 +1,6 @@
-[![Stories in Ready](https://badge.waffle.io/pelensky/VRADbnb.png?label=ready&title=Ready)](https://waffle.io/pelensky/VRADbnb)
 VRADbnb
+*******
+[![Stories in Ready](https://badge.waffle.io/pelensky/VRADbnb.png?label=ready&title=Ready)](https://waffle.io/pelensky/VRADbnb)
 *******
 Instructions: https://github.com/makersacademy/course/tree/master/makersbnb
 
