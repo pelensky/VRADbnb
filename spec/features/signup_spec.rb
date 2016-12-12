@@ -2,7 +2,11 @@ feature "signup" do
   scenario "user can sign up" do
     sign_up
     expect(page).to have_current_path('/listings/new')
-    expect
+  end
+
+  scenario "a user should be added to the Data Base" do
+    user = User.all
+    expect(user.count).to eq 1
   end
 end
 

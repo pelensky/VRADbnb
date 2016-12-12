@@ -1,18 +1,19 @@
-require "data_mapper"
-require "bcrypt"
+require 'data_mapper'
 require 'dm-postgres-adapter'
 
 
-class User
-
+class Listing
   include DataMapper::Resource
 
   property :id, Serial
-  property :email, String
-  property :password, Text
-  property :confirm_password, Text
+  property :name, String
+  property :description, Text
+  property :price, Integer
+  property :start_date, String
+  property :end_date, String
 
 end
+
 
 DataMapper.setup(:default, "postgres://localhost/vradbnb_#{ENV['RACK_ENV']}")
 DataMapper.finalize
