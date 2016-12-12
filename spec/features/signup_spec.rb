@@ -18,10 +18,12 @@ feature "signup" do
 
   scenario "a user needs to input an email address" do
     expect {sign_up(email: nil)}.not_to change(User, :count)
+    expect(page).to have_content('Email must not be blank')
   end
 
   scenario "a user needs to input a valid format of email address" do
     expect {sign_up(email: "invalid@email")}.not_to change(User, :count)
+    expect(page).to have_content('Email has an invalid format')
   end
 
 scenario "a user can not sign up with an existing email" do
