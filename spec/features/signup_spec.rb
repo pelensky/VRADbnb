@@ -15,6 +15,10 @@ feature "signup" do
     expect(current_path).to eq('/signup')
     expect(page).to have_content "Password and confirmation password do not match"
   end
+
+  scenario "a user needs to input an email address" do
+    expect {sign_up(email: nil)}.not_to change(User, :count)
+  end
 end
 
 def sign_up(email: "test@test.com", password: "12345", password_confirmation: "12345" )
