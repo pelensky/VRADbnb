@@ -19,6 +19,10 @@ feature "signup" do
   scenario "a user needs to input an email address" do
     expect {sign_up(email: nil)}.not_to change(User, :count)
   end
+
+  scenario "a user needs to input a valid format of email address" do
+    expect {sign_up(email: "invalid@email")}.not_to change(User, :count)
+  end
 end
 
 def sign_up(email: "test@test.com", password: "12345", password_confirmation: "12345" )
