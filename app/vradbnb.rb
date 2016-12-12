@@ -38,8 +38,12 @@ class VRADBnB < Sinatra::Base
     listing = Listing.create(name: params[:name], description: description,
               price: params[:price], start_date: params[:start_date],
               end_date: params[:end_date])
-    listing.save
-    redirect '/listings'
+    if listing.save
+      redirect '/listings'
+    else
+      flash.now[:errors] = listing.errors.full_messages
+      erb :create_listing
+    end
   end
 
   get '/listings' do
