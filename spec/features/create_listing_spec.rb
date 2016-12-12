@@ -1,6 +1,6 @@
 feature "Creating a new listing" do
 
-  scenario "Owner submits a listing for their space" do
+  xscenario "Owner submits a listing for their space" do
     visit '/listing/new'
 
     fill_in('name', with: 'Russel')

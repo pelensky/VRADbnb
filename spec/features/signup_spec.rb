@@ -6,6 +6,6 @@ feature "signup" do
     fill_in :password, with: "12345"
     fill_in :confirm_password, with: "12345"
     click_button "Sign Up"
-    expect(page).to have_content('Welcome, test@test.com')
+    expect(page).to have_current_path('/listings/new')
   end
 end
