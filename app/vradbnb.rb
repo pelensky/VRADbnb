@@ -1,27 +1,32 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative './models/listing.rb'
 require_relative './models/user.rb'
 
 class VRADBnB < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
+  register Sinatra::Flash
 
   get '/' do
 
   end
 
   get '/signup' do
-
     erb :'/signup'
   end
 
   post '/signup' do
-    user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-    user.save
-    session[:user_id] = user.id
-    redirect '/listings/new'
+    @user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect '/listings/new'
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      erb :'signup'
+    end
   end
 
   get '/listings/new' do
