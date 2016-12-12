@@ -1,0 +1,31 @@
+
+<form method='post' action='listings/new' id='listing_form'>
+<label for="name"> Name
+<br>
+<input type="text" name="name">
+</label>
+<br>
+<label for="description">Description
+<br>
+<textarea rows='4' cols='50' name="description" form='listing_form'>
+</textarea>
+</label>
+<br>
+<label for="price">Price per night (£)
+<br>
+<input type="number" name="price">
+</label>
+<br>
+<label for="start_date">Available from (DD/MM/YY)
+<br>
+<input type="text" name="start_date">
+</label>
+<br>
+<label for="end_date">Available to (DD/MM/YY)
+<br>
+<input type="text" name="end_date">
+</label>
+<br>
+<input type="submit" name="listing" value="List my Space">
+
+</form>
