@@ -1,8 +1,23 @@
 require 'sinatra/base'
 
 class VRADBnB < Sinatra::Base
-  get '/' do
-    'Hello VRADBnB!'
+
+  get '/index' do
+    erb :'/index'
+  end
+
+  post '/index' do
+    
+  end
+
+  get '/signup' do
+
+    erb :'/signup'
+  end
+
+  post '/signup' do
+    @user = User.new(email: params[:email], password: params[:password], confirm_password: params[:confirm_password])
+    redirect '/index'
   end
 
   # start the server if ruby file executed directly
