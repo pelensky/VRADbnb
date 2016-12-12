@@ -2,8 +2,10 @@ ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require_relative './models/listing.rb'
+require_relative './models/user.rb'
 
 class VRADBnB < Sinatra::Base
+  enable :sessions
 
   get '/' do
 
@@ -16,6 +18,7 @@ class VRADBnB < Sinatra::Base
 
   post '/signup' do
     user = User.create(email: params[:email], password: params[:password], confirm_password: params[:confirm_password])
+    session[:user_id] = user.id
     redirect '/listings/new'
   end
 

@@ -10,3 +10,4 @@ gem "selenium-webdriver"
 gem "data_mapper"
 gem "bcrypt"
 gem 'dm-postgres-adapter'
+gem 'database_cleaner'

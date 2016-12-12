@@ -6,7 +6,7 @@ feature "signup" do
 
   scenario "a user should be added to the Data Base" do
     user = User.all
-    expect(user.count).to eq 1
+    expect{ sign_up }.to change(User, :count).by(1)
   end
 end
 
