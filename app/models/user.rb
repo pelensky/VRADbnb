@@ -1,7 +1,12 @@
+require "data_mapper"
+require "bcrypt"
+
 class User
-  def initialize(email, password, confirm_password)
-    @email = email
-    @password = password
-    @confirm_password = confirm_password
-  end
+
+  include DataMapper::Resource
+  property :id, Serial
+  property :email, String
+  property :password_digest, Text
+
+
 end

@@ -12,7 +12,7 @@ class VRADBnB < Sinatra::Base
   end
 
   post '/signup' do
-    
+    user = User.create(email: params[:email], password: params[:password], confirm_password: params[:confirm_password])
     redirect '/listings/new'
   end
 
