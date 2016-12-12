@@ -6,11 +6,17 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
+
 require './app/models/user'
 
+require_relative 'helpers/listing'
+
 Capybara.app = VRADBnB
+
 RSpec.configure do |config|
   config.include Capybara::DSL
+
+  config.include ListingHelpers
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
