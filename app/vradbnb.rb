@@ -18,6 +18,12 @@ class VRADBnB < Sinatra::Base
               price: params[:price], start_date: params[:start_date],
               end_date: params[:end_date])
     listing.save
+    redirect '/listings'
+  end
+
+  get '/listings' do
+    @listings = Listing.all
+    erb :listings
   end
   # start the server if ruby file executed directly
   run! if app_file == $0
