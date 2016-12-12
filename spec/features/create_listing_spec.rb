@@ -31,4 +31,9 @@ feature "Creating a new listing" do
     expect(page).to have_content("End date must not be blank")
   end
 
+  scenario "Owner attempts to submit a listing with letters for price" do
+    new_listing(price:"fourteen")
+    expect(page).to have_content("Price must be an integer")
+  end
+
 end
