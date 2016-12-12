@@ -7,3 +7,5 @@ gem "rspec-sinatra"
 gem "rspec"
 gem "capybara"
 gem "selenium-webdriver"
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
