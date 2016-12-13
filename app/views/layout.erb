@@ -6,21 +6,32 @@
 </head>
 
 <body>
-  <% if current_user %>
-     Aloha, <%= current_user.email %>
-   <% end %>
-  <% if flash[:notice] %>
-  <div id='notice'><%=flash[:notice] %></div>
-  <% end %>
-  <% if flash[:errors] && !flash[:errors].empty? %>
+  <header>
+    <% if current_user %>
+    Aloha, <%= current_user.email %>
+    <% end %>
+    <% if flash[:notice] %>
+    <div id='notice'><%=flash[:notice] %></div>
+    <% end %>
+    <% if flash[:errors] && !flash[:errors].empty? %>
     Please refer to the following errors below:
     <ul id='errors'>
       <% flash[:errors].each do |error| %>
-        <li><%= error %></li>
+      <li><%= error %></li>
       <% end %>
     </ul>
-  <% end %>
-<%= yield %>
+    <% end %>
+    <nav>
+      <ul>
+        <li> <a href="/signup"> </>Sign Up</a></li>
+        <li> <a href="/listings/new"> </>List A Space</a></li>
+        <li> <a href="/listings"> </>View Spaces</a></li>
+        <li> <a href="/login"> </>Log In</a></li>
+        <li> <a href="/logout"> </>Log Out</a></li>
+      </ul>
+    </nav>
+  </header>
+  <%= yield %>
 </body>
 
 </html>
