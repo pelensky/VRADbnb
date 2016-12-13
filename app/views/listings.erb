@@ -13,7 +13,7 @@
 
   <ul id='listings'>
       <%@listings.each do |listing|%>
-      Filter.compare_dates(listing, filter_start_date, filter_end_date)
+      <%Filter.compare_dates(listing, @filter_start_date, @filter_end_date)%>
 
         <li>
           Name: <%= listing.name %>
