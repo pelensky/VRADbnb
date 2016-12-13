@@ -60,7 +60,7 @@ class VRADBnB < Sinatra::Base
       session[:user_id] = user.id
       redirect to('/listings')
     else
-      flash.now[:errors] = ["The email or password is incorrect"]
+      flash[:notice] = "The email or password is incorrect"
       redirect to('/sessions/new')
     end
   end
