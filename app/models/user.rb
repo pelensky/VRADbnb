@@ -22,4 +22,13 @@ class User
   validates_uniqueness_of :email
 
   has n, :listings
+
+  def self.authenticate(email, password)
+    user = User.first(email: email)
+    if user && BCrypt::Password.new(user.password_digest) == password
+      user
+    else
+      nil
+    end
+  end
 end
