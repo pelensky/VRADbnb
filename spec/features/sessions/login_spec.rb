@@ -14,13 +14,4 @@ feature "Logging in" do
     expect(page).to have_content "The email or password is incorrect"
   end
 
-  scenario "user can not sign in if they are already signed it" do
-    sign_up
-
-
-
-  end
-
-
-
 end
