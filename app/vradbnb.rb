@@ -13,15 +13,15 @@ class VRADBnB < Sinatra::Base
 
   end
 
-  get '/signup' do
+  get '/users/new' do
     erb :'/signup'
   end
 
-  post '/signup' do
+  post '/users/new' do
     @user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
     if @user.save
-      session[:user_id] = @user.id
-      redirect '/listings/new'
+      # session[:user_id] = @user.id
+      redirect '/sessions/new'
     else
       flash.now[:errors] = @user.errors.full_messages
       erb :'signup'
