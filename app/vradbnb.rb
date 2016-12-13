@@ -7,6 +7,7 @@ require_relative './models/user.rb'
 require_relative './models/date.rb'
 require_relative './models/filter.rb'
 require_relative 'data_mapper_setup'
+require 'pry'
 
 
 class VRADBnB < Sinatra::Base
@@ -68,21 +69,16 @@ class VRADBnB < Sinatra::Base
   end
 
   get '/listings' do
-    @filter_start_date = session[:start_date]
-    @filter_end_date = session[:end_date]
-
     @listings = Listing.all
-
+    @filter = session[:filter]
     erb :listings
   end
 
 
   post '/listings/filter' do
-
-    session[:start_date] = params[:start_date].gsub(/\-/, "")
-    session[:end_date] =  params[:end_date].gsub(/\-/, "")
-    # @filter_dates = Date.create(start_date: start_date, end_date: end_date)
-    # session[:filter_id] = @filter_dates.id
+    filter_start_date = params[:start_date].gsub(/\//, "")
+    filter_end_date =  params[:end_date].gsub(/\//, "")
+    session[:filter] = Filter.new(filter_start_date, filter_end_date)
     redirect '/listings'
   end
 
@@ -91,12 +87,6 @@ helpers do
   def current_user
     @current_user ||= User.get(session[:user_id])
   end
-
-  # def filter_dates
-  #   @filter_dates ||= Date.get(session[:filter_id])
-  # end
-
-
 end
   # start the server if ruby file executed directly
   run! if app_file == $0

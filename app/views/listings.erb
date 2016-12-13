@@ -13,13 +13,13 @@
 
   <ul id='listings'>
       <%@listings.each do |listing|%>
-      <%Filter.compare_dates(listing, @filter_start_date, @filter_end_date)%>
 
+      <%=filtered_listing = @filter.compare_dates(listing)%>
         <li>
-          Name: <%= listing.name %>
-          Price: <%= listing.price %>
-          Available from: <%= listing.start_date %>
-          Available until: <%= listing.end_date %>
+          Name: <%= filtered_listing.name %>
+          Price: <%= filtered_listing.price %>
+          Available from: <%= filtered_listing.start_date %>
+          Available until: <%= filtered_listing.end_date %>
         </li>
 
         <%end%>
