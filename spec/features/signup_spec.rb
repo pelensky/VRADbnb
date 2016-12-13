@@ -1,8 +1,7 @@
 feature "signup" do
   scenario "user can sign up" do
     sign_up
-    expect(page).to have_content "Aloha, test@test.com"
-    expect(page).to have_current_path('/listings/new')
+    expect(current_path).to eq('/sessions/new')
   end
 
   scenario "a user should be added to the Data Base" do
@@ -12,7 +11,7 @@ feature "signup" do
 
   scenario "requires a matching confirmation password" do
     expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)
-    expect(current_path).to eq('/signup')
+    expect(current_path).to eq('/users/new')
     expect(page).to have_content "Password does not match the confirmation"
   end
 
@@ -26,19 +25,10 @@ feature "signup" do
     expect(page).to have_content('Email has an invalid format')
   end
 
-scenario "a user can not sign up with an existing email" do
-  sign_up
-  expect {sign_up}. not_to change(User, :count)
-  expect(page).to have_content("Email is already taken")
-end
+  scenario "a user can not sign up with an existing email" do
+    sign_up
+    expect {sign_up}. not_to change(User, :count)
+    expect(page).to have_content("Email is already taken")
+  end
 
-end
-
-def sign_up(email: "test@test.com", password: "12345", password_confirmation: "12345" )
-  visit '/signup'
-  expect(page.status_code).to eq(200)
-  fill_in :email, with: email
-  fill_in :password, with: password
-  fill_in :password_confirmation, with: password_confirmation
-  click_button "Sign Up"
 end

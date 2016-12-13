@@ -13,15 +13,14 @@ class VRADBnB < Sinatra::Base
 
   end
 
-  get '/signup' do
+  get '/users/new' do
     erb :'/signup'
   end
 
-  post '/signup' do
+  post '/users/new' do
     @user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
     if @user.save
-      session[:user_id] = @user.id
-      redirect '/listings/new'
+      redirect '/sessions/new'
     else
       flash.now[:errors] = @user.errors.full_messages
       erb :'signup'
@@ -63,6 +62,12 @@ class VRADBnB < Sinatra::Base
       flash[:notice] = "The email or password is incorrect"
       redirect to('/sessions/new')
     end
+  end
+
+  get '/sessions/delete' do
+    session[:user_id] = nil
+    flash.keep[:notice] = "Log out successful. See you soon!"
+    redirect to '/listings'
   end
 
     helpers do
