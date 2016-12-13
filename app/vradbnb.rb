@@ -2,8 +2,7 @@ ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require 'sinatra/flash'
-require_relative './models/listing.rb'
-require_relative './models/user.rb'
+require_relative 'data_mapper_setup'
 
 class VRADBnB < Sinatra::Base
   enable :sessions

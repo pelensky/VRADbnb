@@ -7,7 +7,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
 
-require './app/models/user'
+# require './app/models/user'
 
 require_relative 'helpers/listing'
 
