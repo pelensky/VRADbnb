@@ -14,4 +14,5 @@ class Listing
   validates_primitive_type_of :end_date,
     :message => "Please enter end date in correct format"
 
+    belongs_to :user
 end
