@@ -1,7 +1,4 @@
-require "data_mapper"
-require "bcrypt"
-require 'dm-postgres-adapter'
-
+require 'bcrypt'
 
 class User
 
@@ -23,4 +20,16 @@ class User
   validates_confirmation_of :password
   validates_format_of :email, as: :email_address
   validates_uniqueness_of :email
+
+  has n, :listings
+
+  def self.authenticate(email, password)
+    user = User.first(email: email)
+    if user && BCrypt::Password.new(user.password_digest) == password
+      user
+    else
+      nil
+    end
+  end
+
 end

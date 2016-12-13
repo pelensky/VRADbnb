@@ -1,6 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,700);
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
 
 #listing_form {
   padding-top: 200px;
   max-width: 322px;
   margin: 0 auto;
+}
+
+header {
+    background-color: #333;
+    color: white;
+}
+
+/*Nav Bar*/
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+nav .active {
+    background-color: #4CAF50;
 }

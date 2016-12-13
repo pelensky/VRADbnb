@@ -7,17 +7,34 @@
 </form>
 
 
+
 <h1>Listings</h1>
+<%if @filter_start_date != nil && @filter_end_date != nil %>
 
-<ul id='listings'>
-    <% @listings.each do |listing| %>
+  <ul id='listings'>
+      <%@listings.each do |listing|%>
+      Filter.compare_dates(listing, filter_start_date, filter_end_date)
 
+        <li>
+          Name: <%= listing.name %>
+          Price: <%= listing.price %>
+          Available from: <%= listing.start_date %>
+          Available until: <%= listing.end_date %>
+        </li>
 
+        <%end%>
+    </ul>
+
+  <%else %>
+    <ul id='listings'>
+      <%@listings.each do |listing| %>
       <li>
-        Name: <%= listing.name %>
-        Price: <%= listing.price %>
-        Available from: <%= listing.start_date %>
-        Available until: <%= listing.end_date %>
+      Name: <%= listing.name %>
+      Price: <%= listing.price %>
+      Available from: <%= listing.start_date %>
+      Available until: <%= listing.end_date %>
       </li>
-    <% end %>
-</ul>
+      <%end%>
+    </ul>
+
+<%end%>

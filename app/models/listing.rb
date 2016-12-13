@@ -20,10 +20,6 @@ class Listing
     :message => "Please enter end date in correct format"
 
 
-    has n, :dates, through: Resource
+
+
 end
-
-
-DataMapper.setup(:default, "postgres://localhost/vradbnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_upgrade!
