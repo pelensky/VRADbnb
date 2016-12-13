@@ -4,6 +4,8 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require_relative './models/listing.rb'
 require_relative './models/user.rb'
+require_relative './models/date.rb'
+require_relative './models/database_setting.rb'
 
 class VRADBnB < Sinatra::Base
   enable :sessions
@@ -35,6 +37,7 @@ class VRADBnB < Sinatra::Base
 
   post '/listings' do
     description = params[:description]
+
     listing = Listing.create(name: params[:name], description: description,
               price: params[:price], start_date: params[:start_date],
               end_date: params[:end_date])
@@ -47,14 +50,38 @@ class VRADBnB < Sinatra::Base
   end
 
   get '/listings' do
+
     @listings = Listing.all
+
     erb :listings
   end
+
+  post '/listings/filter' do
+    p params[:start_date]
+
+    @filter_dates = Date.create(start_date: params[:start_date], end_date: params[:end_date])
+    session[:filter_id] = @filter_dates.id
+    redirect '/listings'
+  end
+
 
 helpers do
   def current_user
     @current_user ||= User.get(session[:user_id])
   end
+
+  def filter_dates
+    @filter_dates ||= Date.get(session[:filter_id])
+  end
+
+  # def compare_dates
+  #   @listings.each do |listing|
+  #     if @filter_dates != nil
+  #       listing.start_date <= @filter_dates.start_date > listing.end_date
+  #       listing.start_date < @filter_dates.end_date >= listing.end_date
+  #     end
+  #   end
+  # end
 end
   # start the server if ruby file executed directly
   run! if app_file == $0

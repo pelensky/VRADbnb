@@ -24,7 +24,3 @@ class User
   validates_format_of :email, as: :email_address
   validates_uniqueness_of :email
 end
-
-DataMapper.setup(:default, "postgres://localhost/vradbnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_upgrade!

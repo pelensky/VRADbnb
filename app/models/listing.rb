@@ -17,8 +17,10 @@ class Listing
     :message => "Please enter start date in correct format"
 
   validates_primitive_type_of :end_date,
-    :message => "Please enter end date in correct format" 
+    :message => "Please enter end date in correct format"
 
+
+    has n, :dates, through: Resource
 end
 
 
