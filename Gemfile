@@ -12,3 +12,4 @@ gem "bcrypt"
 gem 'dm-postgres-adapter'
 gem 'database_cleaner'
 gem 'sinatra-flash'
+gem 'rake'

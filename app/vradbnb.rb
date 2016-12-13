@@ -2,8 +2,7 @@ ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require 'sinatra/flash'
-require_relative './models/listing.rb'
-require_relative './models/user.rb'
+require_relative 'data_mapper_setup'
 
 class VRADBnB < Sinatra::Base
   enable :sessions
@@ -37,7 +36,7 @@ class VRADBnB < Sinatra::Base
     description = params[:description]
     listing = Listing.create(name: params[:name], description: description,
               price: params[:price], start_date: params[:start_date],
-              end_date: params[:end_date])
+              end_date: params[:end_date], user_id: session[:user_id])
     if listing.save
       redirect '/listings'
     else
