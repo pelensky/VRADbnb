@@ -1,5 +1,5 @@
 <div class="form">
-  <form action='/listings' method='post'  id='listing_form'>
+  <form action='/listings/new' method='post'  id='listing_form'>
     <label for="name"> Name </label>
     <br>
     <input type="text" name="name">
@@ -12,13 +12,13 @@
     <br>
     <input type="number" name="price">
     <br>
-    <label for="start_date">Available from (DD/MM/YY)</label>
+    <label for="start_date">Available from (YYYY/MM/DD)</label>
     <br>
-    <input type="text" name="start_date">
+    <input type="date" name="start_date">
     <br>
-    <label for="end_date">Available to (DD/MM/YY)</label>
+    <label for="end_date">Available to (YYYY/MM/DD)</label>
     <br>
-    <input type="text" name="end_date">
+    <input type="date" name="end_date">
     <br>
     <input type="submit" name="listing" value="List my Space">
   </form>
