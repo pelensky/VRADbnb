@@ -14,7 +14,7 @@ class VRADBnB < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-
+    redirect to('/sessions/new')
   end
 
   get '/users/new' do
@@ -134,7 +134,7 @@ class VRADBnB < Sinatra::Base
   end
 
   get '/requests/:id' do
-      erb :requests
+    erb :requests
   end
 
   helpers do
