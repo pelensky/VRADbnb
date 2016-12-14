@@ -54,7 +54,7 @@ class VRADBnB < Sinatra::Base
     erb :create_listing
   end
 
-  post '/listings' do
+  post '/listings/new' do
     description = params[:description]
     listing = Listing.create(name: params[:name], description: description,
     price: params[:price], start_date: params[:start_date],
@@ -68,6 +68,15 @@ class VRADBnB < Sinatra::Base
   end
 
   get '/listings' do
+    # if session[:filter]
+    #   @listings = session[:filter]
+    # else
+    @listings = Listing.all
+    # end
+    erb :listings
+  end
+
+  post '/listings' do
     renter_start_date = params[:start_date]
     renter_end_date = params[:end_date]
     if renter_start_date && renter_end_date
@@ -76,20 +85,20 @@ class VRADBnB < Sinatra::Base
     else
       @listings = Listing.all
     end
+    # session[:filter] = @listings
+    # redirect to('/listings')
     erb :listings
   end
 
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
 
-  post '/listings/filter' do
-    redirect '/listings'
+    # def current_filter
+    #   @current_filter ||=Filter.get(session[:filter])
+    # end
   end
-
-
-helpers do
-  def current_user
-    @current_user ||= User.get(session[:user_id])
-  end
-end
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
