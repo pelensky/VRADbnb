@@ -18,7 +18,7 @@ class VRADBnB < Sinatra::Base
   end
 
   post '/owner/new' do
-    @owner = Owner.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    @owner = Owner.create(email: params[:email_o], password: params[:password_o], password_confirmation: params[:password_confirmation_o])
     if @owner.save
       redirect '/owner/sessions/new'
     else
@@ -28,7 +28,7 @@ class VRADBnB < Sinatra::Base
   end
 
   post '/renter/new' do
-    @renter = Renter.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    @renter = Renter.create(email: params[:email_r], password: params[:password_r], password_confirmation: params[:password_confirmation_r])
     if @renter.save
       redirect '/renter/sessions/new'
     else
