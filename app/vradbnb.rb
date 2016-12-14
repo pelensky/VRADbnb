@@ -125,10 +125,17 @@ class VRADBnB < Sinatra::Base
     redirect to '/listings'
   end
 
-  get '/requests/new' do
-    erb :requests
+
+
+  post '/requests/:id' do
+    listing = Listing.first(params[:id])
+    request = Request.new(date: params[:date], renter: current_renter, listing: listing)
+
   end
 
+  get '/requests/:id' do
+      erb :requests
+  end
 
   helpers do
     def current_owner
@@ -137,6 +144,10 @@ class VRADBnB < Sinatra::Base
 
     def current_renter
       @current_renter ||= Renter.get(session[:user_id])
+    end
+
+    def current_listing
+      @current_listing ||= Listing.get(session[:listing_id])
     end
   end
   # start the server if ruby file executed directly
