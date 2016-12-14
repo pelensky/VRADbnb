@@ -30,4 +30,7 @@ module SessionHelpers
     click_button "Sign in as a renter"
   end
 
+  def sign_out
+    click_link "Log Out"
+  end
 end

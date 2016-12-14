@@ -8,6 +8,9 @@ class Renter
   property :password_digest, Text
   property :password_confirmation, Text
 
+  has n, :requests
+
+
 def password=(password)
   @password = password
   self.password_digest = BCrypt::Password.create(password)
