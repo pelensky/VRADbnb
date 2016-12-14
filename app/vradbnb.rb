@@ -2,12 +2,10 @@ ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require 'sinatra/flash'
-require_relative './models/listing.rb'
-require_relative './models/user.rb'
-require_relative './models/date.rb'
-require_relative './models/filter.rb'
+# require_relative './models/listing.rb'
+# require_relative './models/user.rb'
+# require_relative './models/filter.rb'
 require_relative 'data_mapper_setup'
-require 'pry'
 
 
 class VRADBnB < Sinatra::Base
@@ -82,13 +80,6 @@ class VRADBnB < Sinatra::Base
     @listings = Listing.all
     erb :listings
   end
-
-<<<<<<< HEAD
-  post '/renter/requests' do
-    erb :requests
-  end
-=======
->>>>>>> 2316db38e65d64c1819902993e6e5a111aaaba6e
 
   get '/sessions/new' do
     erb :login
