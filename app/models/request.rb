@@ -1,5 +1,6 @@
 class Request
 
+
   property :id, Serial
   property :date, String, required: true
 
