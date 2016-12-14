@@ -6,7 +6,7 @@ feature "requesting a space" do
     sign_up_r
     expect(current_path).to eq('/listings')
     click_button('Request')
-    expect(current_path).to eq('/requests/new')
+    expect(page).to have_content "Requests"
     fill_in "date", with: "25/12/2016"
     click_button("submit")
   end
