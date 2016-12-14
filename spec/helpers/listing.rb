@@ -4,8 +4,8 @@ module ListingHelpers
     name: "Sunny palace",
     description: "Beautiful views, clogged toilets.",
     price: 15,
-    start_date: "25/12/16",
-    end_date: "26/12/16"
+    start_date: "25/12/2016",
+    end_date: "26/12/2016"
     )
     visit '/listings/new'
     fill_in("name", with: name)
@@ -15,5 +15,4 @@ module ListingHelpers
     fill_in("end_date", with: end_date)
     click_button('List my Space')
   end
-
 end

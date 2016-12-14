@@ -1,6 +1,16 @@
-<h1>Listings</h1>
+<form action='/listings' method='post'>
+  <label for="start_date">Available from </label>
+  <input type="date"  name="start_date">
+  <label for="end_date">Available to </label>
+  <input type="date"  name="end_date">
+  <input type="submit" name="filter" value="List Spaces">
+</form>
 
+
+
+<h1>Listings</h1>
 <ul id='listings'>
+<<<<<<< HEAD
     <% @listings.each do |listing| %>
       <li>
         Name: <%= listing.name %>
@@ -12,4 +22,14 @@
         </form>
       </li>
     <% end %>
+=======
+  <%@listings.each do |listing| %>
+  <li>
+    Name: <%= listing.name %>
+    Price: <%= listing.price %>
+    Available from: <%= listing.start_date %>
+    Available until: <%= listing.end_date %>
+  </li>
+  <%end%>
+>>>>>>> 2316db38e65d64c1819902993e6e5a111aaaba6e
 </ul>
