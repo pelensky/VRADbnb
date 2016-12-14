@@ -56,7 +56,6 @@ class VRADBnB < Sinatra::Base
 
   post '/listings' do
     description = params[:description]
-
     listing = Listing.create(name: params[:name], description: description,
     price: params[:price], start_date: params[:start_date],
     end_date: params[:end_date], user_id: session[:user_id])
@@ -69,16 +68,19 @@ class VRADBnB < Sinatra::Base
   end
 
   get '/listings' do
-    @listings = Listing.all
-    @filter = session[:filter]
+    renter_start_date = params[:start_date]
+    renter_end_date = params[:end_date]
+    if renter_start_date && renter_end_date
+      filter = Filter.new(renter_start_date, renter_end_date)
+      @listings = filter.filter_spaces
+    else
+      @listings = Listing.all
+    end
     erb :listings
   end
 
 
   post '/listings/filter' do
-    filter_start_date = params[:start_date].gsub(/\//, "")
-    filter_end_date =  params[:end_date].gsub(/\//, "")
-    session[:filter] = Filter.new(filter_start_date, filter_end_date)
     redirect '/listings'
   end
 

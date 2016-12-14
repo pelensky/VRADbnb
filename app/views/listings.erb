@@ -1,4 +1,4 @@
-<form action='/listings/filter' method='post'>
+<form action='/listings' method='post'>
   <label for="start_date">Available from </label>
   <input type="date"  name="start_date">
   <label for="end_date">Available to </label>
@@ -9,32 +9,13 @@
 
 
 <h1>Listings</h1>
-<%if @filter_start_date != nil && @filter_end_date != nil %>
-
-  <ul id='listings'>
-      <%@listings.each do |listing|%>
-
-      <%=filtered_listing = @filter.compare_dates(listing)%>
-        <li>
-          Name: <%= filtered_listing.name %>
-          Price: <%= filtered_listing.price %>
-          Available from: <%= filtered_listing.start_date %>
-          Available until: <%= filtered_listing.end_date %>
-        </li>
-
-        <%end%>
-    </ul>
-
-  <%else %>
-    <ul id='listings'>
-      <%@listings.each do |listing| %>
-      <li>
-      Name: <%= listing.name %>
-      Price: <%= listing.price %>
-      Available from: <%= listing.start_date %>
-      Available until: <%= listing.end_date %>
-      </li>
-      <%end%>
-    </ul>
-
-<%end%>
+<ul id='listings'>
+  <%@listings.each do |listing| %>
+  <li>
+    Name: <%= listing.name %>
+    Price: <%= listing.price %>
+    Available from: <%= listing.start_date %>
+    Available until: <%= listing.end_date %>
+  </li>
+  <%end%>
+</ul>
