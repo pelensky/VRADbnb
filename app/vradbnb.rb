@@ -17,12 +17,22 @@ class VRADBnB < Sinatra::Base
     erb :'/signup'
   end
 
-  post '/users/new' do
-    @user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-    if @user.save
-      redirect '/sessions/new'
+  post '/owner/new' do
+    @owner = Owner.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    if @owner.save
+      redirect '/owner/sessions/new'
     else
-      flash.now[:errors] = @user.errors.full_messages
+      flash.now[:errors] = @owner.errors.full_messages
+      erb :'signup'
+    end
+  end
+
+  post '/renter/new' do
+    @renter = Renter.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    if @renter.save
+      redirect '/renter/sessions/new'
+    else
+      flash.now[:errors] = @renter.errors.full_messages
       erb :'signup'
     end
   end
@@ -35,7 +45,7 @@ class VRADBnB < Sinatra::Base
     description = params[:description]
     listing = Listing.create(name: params[:name], description: description,
     price: params[:price], start_date: params[:start_date],
-    end_date: params[:end_date], user_id: session[:user_id])
+    end_date: params[:end_date], owner_id: session[:owner_id])
     if listing.save
       redirect '/listings'
     else
@@ -49,18 +59,33 @@ class VRADBnB < Sinatra::Base
     erb :listings
   end
 
-  get '/sessions/new' do
+  get '/owner/sessions/new' do
     erb :login
   end
 
-  post '/sessions' do
-    user = User.authenticate(params[:email], params[:password])
-    if user
-      session[:user_id] = user.id
+  get '/renter/sessions/new' do
+    erb :login
+  end
+
+  post '/owner/sessions' do
+    owner = Owner.authenticate(params[:email], params[:password])
+    if owner
+      session[:user_id] = owner.id
       redirect to('/listings')
     else
       flash[:notice] = "The email or password is incorrect"
-      redirect to('/sessions/new')
+      redirect to('/owner/sessions/new')
+    end
+  end
+
+  post '/renter/sessions' do
+    renter = Renter.authenticate(params[:email], params[:password])
+    if renter
+      session[:user_id] = renter.id
+      redirect to('/listings')
+    else
+      flash[:notice] = "The email or password is incorrect"
+      redirect to('/renter/sessions/new')
     end
   end
 
@@ -70,11 +95,16 @@ class VRADBnB < Sinatra::Base
     redirect to '/listings'
   end
 
-    helpers do
-      def current_user
-        @current_user ||= User.get(session[:user_id])
-      end
+
+  helpers do
+    def current_owner
+      @current_owner ||= Owner.get(session[:user_id])
     end
-    # start the server if ruby file executed directly
-    run! if app_file == $0
+
+    def current_renter
+      @current_renter ||= Renter.get(session[:user_id])
+    end
   end
+  # start the server if ruby file executed directly
+  run! if app_file == $0
+end

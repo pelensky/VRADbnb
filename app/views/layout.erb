@@ -7,8 +7,10 @@
 
 <body>
   <header>
-    <% if current_user %>
-    Aloha, <%= current_user.email %>
+    <% if current_owner %>
+    Aloha, <%= current_owner.email %>
+    <% elsif current_renter %>
+    Aloha, <%= current_renter.email %>
     <% end %>
     <% if flash[:notice] %>
     <div id='notice'><%=flash[:notice] %></div>

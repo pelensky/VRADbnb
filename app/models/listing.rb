@@ -10,7 +10,7 @@ class Listing
   property :start_date, Date, required: true
   property :end_date, Date, required: true
 
-  belongs_to :user
+  belongs_to :owner
 
   validates_primitive_type_of :start_date,
     :message => "Please enter start date in correct format"

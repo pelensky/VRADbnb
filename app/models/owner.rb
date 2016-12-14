@@ -1,13 +1,15 @@
 require 'bcrypt'
 
-class User
+class Owner
+  include DataMapper::Resource
 
-    include DataMapper::Resource
+  property :id, Serial
+  property :email, String, required: true, unique: true
+  property :password_digest, Text
+  property :password_confirmation, Text
 
-    property :id, Serial
-    property :email, String, required: true, unique: true
-    property :password_digest, Text
-    property :password_confirmation, Text
+  has n, :listings
+
 
   def password=(password)
     @password = password
@@ -22,9 +24,9 @@ class User
   validates_uniqueness_of :email
 
   def self.authenticate(email, password)
-    user = User.first(email: email)
-    if user && BCrypt::Password.new(user.password_digest) == password
-      user
+    owner = Owner.first(email: email)
+    if owner && BCrypt::Password.new(owner.password_digest) == password
+      owner
     else
       nil
     end
