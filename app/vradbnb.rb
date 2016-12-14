@@ -128,6 +128,10 @@ class VRADBnB < Sinatra::Base
     redirect to '/listings'
   end
 
+  get '/requests/new' do
+    erb :requests
+  end
+
 
   helpers do
     def current_owner
