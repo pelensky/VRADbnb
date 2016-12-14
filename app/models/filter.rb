@@ -15,7 +15,7 @@ class Filter
       space_start = listing.start_date.gsub(/\//, "")
       space_end = listing.end_date.gsub(/\//, "")
 
-      if @renter_start_date < space_start && @renter_end_date > space_end
+      if @renter_start_date >= space_start && @renter_end_date <= space_end
         filtered_spaces << listing
 
       end
