@@ -20,7 +20,8 @@ class VRADBnB < Sinatra::Base
   post '/owner/new' do
     @owner = Owner.create(email: params[:email_o], password: params[:password_o], password_confirmation: params[:password_confirmation_o])
     if @owner.save
-      redirect '/owner/sessions/new'
+      session[:user_id] = @owner.id
+      redirect '/listings'
     else
       flash.now[:errors] = @owner.errors.full_messages
       erb :'signup'
@@ -30,7 +31,8 @@ class VRADBnB < Sinatra::Base
   post '/renter/new' do
     @renter = Renter.create(email: params[:email_r], password: params[:password_r], password_confirmation: params[:password_confirmation_r])
     if @renter.save
-      redirect '/renter/sessions/new'
+      session[:user_id] = @renter.id
+      redirect '/listings'
     else
       flash.now[:errors] = @renter.errors.full_messages
       erb :'signup'
@@ -59,11 +61,7 @@ class VRADBnB < Sinatra::Base
     erb :listings
   end
 
-  get '/owner/sessions/new' do
-    erb :login
-  end
-
-  get '/renter/sessions/new' do
+  get '/sessions/new' do
     erb :login
   end
 
@@ -74,7 +72,7 @@ class VRADBnB < Sinatra::Base
       redirect to('/listings')
     else
       flash[:notice] = "The email or password is incorrect"
-      redirect to('/owner/sessions/new')
+      redirect to('/sessions/new')
     end
   end
 
@@ -85,7 +83,7 @@ class VRADBnB < Sinatra::Base
       redirect to('/listings')
     else
       flash[:notice] = "The email or password is incorrect"
-      redirect to('/renter/sessions/new')
+      redirect to('/sessions/new')
     end
   end
 

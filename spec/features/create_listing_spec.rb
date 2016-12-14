@@ -2,7 +2,6 @@ feature "Creating a new listing" do
 
   scenario "Owner submits a listing for their space" do
     sign_up_o
-    sign_in_o
     new_listing
     expect(page).to have_current_path('/listings')
     expect(page).to have_content("Sunny palace")

@@ -1,13 +1,24 @@
 feature "signup" do
   scenario "owner can sign up" do
     sign_up_o
-    expect(current_path).to eq('/owner/sessions/new')
+    expect(current_path).to eq('/listings')
   end
 
   scenario "renter can sign up" do
     sign_up_r
-    expect(current_path).to eq('/renter/sessions/new')
+    expect(current_path).to eq('/listings')
   end
+
+  scenario "owner can sign in" do
+    sign_up_o
+    expect(page).to have_content "Aloha, owner@test.com"
+  end
+
+  scenario "renter can sign in" do
+    sign_up_r
+    expect(page).to have_content "Aloha, renter@test.com"
+  end
+
 
   scenario "an owner should be added to the Data Base" do
     expect{ sign_up_o }.to change(Owner, :count).by(1)

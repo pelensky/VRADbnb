@@ -2,7 +2,6 @@ feature "Signing out" do
 
   scenario "owner signs out" do
     sign_up_o
-    sign_in_o
     click_link "Log Out"
     expect(current_path).to eq('/listings')
     expect(page).to have_content("Log out successful.")
@@ -11,7 +10,6 @@ feature "Signing out" do
 
   scenario "renter signs out" do
     sign_up_r
-    sign_in_r
     click_link "Log Out"
     expect(current_path).to eq('/listings')
     expect(page).to have_content("Log out successful.")
