@@ -68,7 +68,7 @@ class VRADBnB < Sinatra::Base
   end
 
   post '/owner/sessions' do
-    owner = Owner.authenticate(params[:email], params[:password])
+    owner = Owner.authenticate(params[:email_o], params[:password_o])
     if owner
       session[:user_id] = owner.id
       redirect to('/listings')
@@ -79,7 +79,7 @@ class VRADBnB < Sinatra::Base
   end
 
   post '/renter/sessions' do
-    renter = Renter.authenticate(params[:email], params[:password])
+    renter = Renter.authenticate(params[:email_r], params[:password_r])
     if renter
       session[:user_id] = renter.id
       redirect to('/listings')
