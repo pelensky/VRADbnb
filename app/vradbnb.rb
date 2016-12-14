@@ -61,6 +61,10 @@ class VRADBnB < Sinatra::Base
     erb :listings
   end
 
+  post '/renter/requests' do
+    erb :requests
+  end
+
   get '/sessions/new' do
     erb :login
   end

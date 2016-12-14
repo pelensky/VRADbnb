@@ -6,6 +6,8 @@ feature "requests" do
     sign_out
     sign_up_r
     expect(page).to have_content("Sunny palace")
+    click_button("Request")
+    expect(page).to have_current_path("/renter/requests")
   end
 
 end

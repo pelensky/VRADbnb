@@ -7,6 +7,9 @@
         Price: <%= listing.price %>
         Available from: <%= listing.start_date %>
         Available until: <%= listing.end_date %>
+        <form method="POST" action="/renter/requests">
+          <input type="submit" value="Request">
+        </form>
       </li>
     <% end %>
 </ul>
