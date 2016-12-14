@@ -19,13 +19,13 @@ feature "signup" do
 
   scenario "requires a matching confirmation password" do
     expect { sign_up_o(password_confirmation: 'wrong') }.not_to change(Owner, :count)
-    expect(current_path).to eq('/user/new')
+    expect(current_path).to eq('/owner/new')
     expect(page).to have_content "Password does not match the confirmation"
   end
 
   scenario "requires a matching confirmation password" do
     expect { sign_up_r(password_confirmation: 'wrong') }.not_to change(Renter, :count)
-    expect(current_path).to eq('/user/new')
+    expect(current_path).to eq('/renter/new')
     expect(page).to have_content "Password does not match the confirmation"
   end
 
