@@ -14,6 +14,6 @@ class Listing
   property :end_date, String, required: true
 
   belongs_to :owner
-  has n, :requests
+  has n, :books
 
 end

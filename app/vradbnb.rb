@@ -127,15 +127,19 @@ class VRADBnB < Sinatra::Base
 
 
 
-  post '/requests/:id' do
+  post '/booking/:id' do
     listing = Listing.first(params[:id])
-    request = Request.new(date: params[:date], renter: current_renter, listing: listing)
+    book = Book.new(date: params[:date], renter: current_renter, listing: listing)
 
   end
 
-  get '/requests/:id' do
-      erb :requests
+  post '/booking' do
+    @listing = Listing.get(params[:hidden_listing])
+    erb :booking
   end
+
+
+
 
   helpers do
     def current_owner
