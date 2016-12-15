@@ -1,4 +1,4 @@
-class Request
+class Book
   include DataMapper::Resource
 
 
