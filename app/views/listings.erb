@@ -9,16 +9,14 @@
 
 
 <h3>Listings</h3>
+<br>
 <ul id='listings' class="container">
-
-
-
   <%@listings.each do |listing| %>
   <li>
-    Name: <%= listing.name %>
-    Price: <%= listing.price %>
-    Available from: <%= listing.start_date %>
-    Available until: <%= listing.end_date %>
+    Name: <%= listing.name %> <br>
+    Price: £<%= listing.price %> <br>
+    Available from: <%= listing.start_date %> <br>
+    Available until: <%= listing.end_date %> <br>
     <form method='post' action="/booking">
       <input type="hidden" name="hidden_listing" value="<%=listing.id%>">
       <input type='submit' value='Book'>
