@@ -18,7 +18,7 @@ class VRADBnB < Sinatra::Base
       redirect to('/sessions/new')
     end
   end
-  
+
   get '/sessions/delete' do
     session[:user_id] = nil
     flash.keep[:notice] = "Log out successful. See you soon!"
