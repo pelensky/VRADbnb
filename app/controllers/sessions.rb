@@ -1,5 +1,9 @@
 class VRADBnB < Sinatra::Base
 
+get '/' do
+  erb :login
+end
+
   get '/users/new' do
     erb :'/signup'
   end
