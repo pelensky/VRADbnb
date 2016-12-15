@@ -8,7 +8,7 @@ class Renter
   property :password_digest, Text
   property :password_confirmation, Text
 
-  has n, :requests
+  has n, :books
 
 
 def password=(password)

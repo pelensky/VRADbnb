@@ -19,8 +19,9 @@
     Price: <%= listing.price %>
     Available from: <%= listing.start_date %>
     Available until: <%= listing.end_date %>
-    <form method='get' action="/requests/<%= listing.id %>">
-      <input type='submit' value='Request'>
+    <form method='post' action="/booking">
+      <input type="hidden" name="hidden_listing" value="<%=listing.id%>">
+      <input type='submit' value='Book'>
     </form>
   </li>
   <%end%>

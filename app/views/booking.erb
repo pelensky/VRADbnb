@@ -1,0 +1,14 @@
+<h1> Your booking </h1>
+
+<ul>
+  <li> Name: <%= @listing.name %> </li>
+  <li> Description: <%= @listing.description %> </li>
+  <li> Price: <%= @listing.price %> </li>
+  <li> Choose a date:
+    <form method="post" action="/booking/<%= @listing.id %>">
+      <input type="date" name="date">
+      <input type="submit" value="submit">
+    </form>
+  </li>
+</ul>
+<br>
