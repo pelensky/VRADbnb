@@ -33,5 +33,5 @@ class VRADBnB < Sinatra::Base
     end
     erb :listings
   end
-  
+
 end
