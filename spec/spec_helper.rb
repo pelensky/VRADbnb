@@ -11,6 +11,8 @@ require 'database_cleaner'
 
 require_relative 'helpers/listing'
 require_relative 'helpers/sessions'
+require_relative 'helpers/bookings'
+
 
 Capybara.app = VRADBnB
 
@@ -19,6 +21,8 @@ RSpec.configure do |config|
 
   config.include ListingHelpers
   config.include SessionHelpers
+  config.include BookingHelpers
+
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

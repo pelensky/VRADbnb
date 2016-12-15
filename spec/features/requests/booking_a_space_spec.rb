@@ -15,4 +15,5 @@ feature "bookinging a space" do
     fill_in "date", with: "25/12/2016"
     click_button("submit")
   end
+
 end
