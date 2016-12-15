@@ -126,19 +126,16 @@ class VRADBnB < Sinatra::Base
   end
 
 
-
   post '/booking/:id' do
     listing = Listing.first(params[:id])
     book = Book.new(date: params[:date], renter: current_renter, listing: listing)
-
+    redirect to('/listings')
   end
 
   post '/booking' do
     @listing = Listing.get(params[:hidden_listing])
     erb :booking
   end
-
-
 
 
   helpers do
