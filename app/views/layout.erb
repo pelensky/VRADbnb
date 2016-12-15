@@ -49,10 +49,10 @@
             <a href="/listings"> </>View Spaces</a>
           </li>
           <li>
-            <a href="/sessions/new"> </>Log In</a>
+            <a href="/sessions/new"> </>Sign In</a>
           </li>
           <li>
-            <a href="/sessions/delete"> </>Log Out</a>
+            <a href="/sessions/delete"> </>Sign Out</a>
           </li>
         </ul>
       </div>
@@ -63,28 +63,33 @@
 
 
 
-  <header>
-    <% if current_owner %>
-    Aloha, <%= current_owner.email %>
-    <% elsif current_renter %>
-    Aloha, <%= current_renter.email %>
-    <% end %>
-    <% if flash[:notice] %>
-    <div id='notice'><%=flash[:notice] %></div>
-    <% end %>
-    <% if flash[:errors] && !flash[:errors].empty? %>
-    Please refer to the following errors below:
-    <ul id='errors'>
-      <% flash[:errors].each do |error| %>
-      <li><%= error %></li>
-      <% end %>
-    </ul>
-    <% end %>
 
 
-  </header>
+
+
   <div class="jumbotron">
+
+
     <div class="container">
+      <h4>
+      <% if current_owner %>
+      Aloha, <%= current_owner.email %>
+      <% elsif current_renter %>
+      Aloha, <%= current_renter.email %>
+      <% end %>
+      <% if flash[:notice] %>
+      <div id='notice'><%=flash[:notice] %></div>
+      <% end %>
+      </h4>
+
+      <% if flash[:errors] && !flash[:errors].empty? %>
+        <div id='errors'>
+         <% flash[:errors].each do |error| %><%= error %><% end %>
+      </div>
+      <% end %>
+      <br>
+      <br>
+
       <%= yield %>
     </div>
   </div>
