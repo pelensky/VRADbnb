@@ -31,5 +31,4 @@ def self.authenticate(email, password)
     nil
   end
 end
-
 end
