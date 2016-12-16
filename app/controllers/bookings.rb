@@ -1,10 +1,10 @@
 class VRADBnB < Sinatra::Base
-
-    post '/booking/new' do
+     post '/booking/new' do
       listing = Listing.get(params[:hidden_value])
+      listing.requested = true
       book = Book.create(date: params[:date],
             renter: current_renter, listing: listing)
-      redirect to('/booking/history')
+      redirect to('/booking/renter_history')
     end
 
     post '/booking' do
@@ -12,8 +12,15 @@ class VRADBnB < Sinatra::Base
       erb :booking
     end
 
-    get '/booking/history' do
+    get '/booking/renter_history' do
       @renter_history = Book.all(renter_id: current_renter.id)
-      erb :history
+
+      erb :renter_history
+    end
+
+    get '/booking/owner_history' do
+      owner_history = Listing.all(owner_id: current_owner.id)
+      @owner_requested_spaces = owner_history.all(requested: true)
+      erb :owner_history
     end
 end
