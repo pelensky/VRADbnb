@@ -1,8 +1,8 @@
 <%@owner_requested_spaces.each do |listing| %>
-<li>
-  Name: <%= listing.name %>
-  Price: <%= listing.price %>
+<h4><%= listing.name %></h4>
+  Price: £<%= listing.price %>
+  <br>
   Available from: <%= listing.start_date %>
+  <br>
   Available until: <%= listing.end_date %>
-</li>
 <%end%>
