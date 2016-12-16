@@ -1,6 +1,5 @@
 class VRADBnB < Sinatra::Base
-
-    post '/booking/new' do
+     post '/booking/new' do
       listing = Listing.get(params[:hidden_value])
       listing.requested = true
       book = Book.create(date: params[:date],
@@ -26,3 +25,4 @@ class VRADBnB < Sinatra::Base
       erb :owner_history
     end
 end
+
