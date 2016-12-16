@@ -14,7 +14,6 @@
 <br>
 <ul id='listings' class="container">
   <%@listings.each do |listing| %>
-  <li>
   <h4> <%= listing.name %></h4>
     Price: £<%= listing.price %> <br>
     Available from: <%= listing.start_date %> <br>
@@ -25,7 +24,5 @@
       <input type='submit' value='Book'>
     </form>
     <%end%>
-  </li>
   <%end%>
-
 </ul>
