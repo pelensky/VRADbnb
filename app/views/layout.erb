@@ -46,9 +46,16 @@
             <li>
               <a href="/listings"> </>View Spaces</a>
             </li>
+            <% if current_owner %>
             <li>
-              <a href="/booking/history"> </>History</a>
+              <a href="/booking/owner_history"> </>History</a>
             </li>
+            <% end %>
+            <% if current_renter %>
+            <li>
+              <a href="/booking/renter_history"> </>History</a>
+            </li>
+            <% end %>
             <% if current_owner == nil && current_renter == nil %>
             <li>
               <a href="/users/new"> </>Sign Up</a></li>
@@ -56,7 +63,7 @@
             <li>
               <a href="/sessions/new"> </>Sign In</a>
             </li>
-            <% end %> 
+            <% end %>
             <% if current_owner || current_renter %>
             <li>
               <a href="/sessions/delete"> </>Sign Out</a>
