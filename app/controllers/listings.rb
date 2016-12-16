@@ -33,5 +33,11 @@ class VRADBnB < Sinatra::Base
     end
     erb :listings
   end
-  
+
+  get '/listings/my_listings' do
+    @my_listings = Listing.all(owner: current_owner)
+    binding.pry
+    erb :my_listings
+  end
+
 end
