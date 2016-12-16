@@ -5,7 +5,7 @@ feature "When a renter has made a booking" do
     sign_in_o
     visit '/booking/owner_history'
     expect(page).to have_content("Sunny palace")
-    # expect(page).to have_button("Confirm")
+    expect(page).to have_button("Confirm")
   end
 
   scenario "and the property of listing requested changes to true" do

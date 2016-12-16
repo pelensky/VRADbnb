@@ -1,8 +1,13 @@
-<%@owner_requested_spaces.each do |listing| %>
+<%@owner_bookings.each do |booking| %>
 <li>
-  Name: <%= listing.name %>
-  Price: <%= listing.price %>
-  Available from: <%= listing.start_date %>
-  Available until: <%= listing.end_date %>
+  Date: <%= booking.date %>
+  Name: <%= booking.listing.name %>
+  <% if booking.confirmed == false %>
+  <form method="post" action="/booking/owner_history">\
+    <input type="submit" value="Confirm">
+  </form>
+  <% else %>
+  This booking is confirmed
+  <%end%>
 </li>
 <%end%>
