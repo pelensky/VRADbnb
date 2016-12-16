@@ -1,7 +1,8 @@
 class VRADBnB < Sinatra::Base
   use Rack::MethodOverride
-  enable :sessions
-  set :session_secret, 'super secret'
+  use Rack::Session::Cookie,  :expire_after => 3600,
+                              :secret => 'super secret'
+
   register Sinatra::Flash
 
   helpers do
