@@ -65,9 +65,9 @@
       <div class="container">
         <h4>
           <% if current_owner %>
-          Aloha, <%= current_owner.email %>
+          Aloha, <%= current_owner.email %>. You are logged in as an Owner.
           <% elsif current_renter %>
-          Aloha, <%= current_renter.email %>
+          Aloha, <%= current_renter.email %>. You are logged in as a Renter.
           <% end %>
           <% if flash[:notice] %>
           <div id='notice'><%=flash[:notice] %></div>
