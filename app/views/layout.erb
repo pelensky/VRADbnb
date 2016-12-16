@@ -37,24 +37,31 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li>
-              <a href="/users/new"> </>Sign Up</a></li>
-            </li>
+
+            <% if current_owner %>
             <li>
               <a href="/listings/new"> </>List A Space</a>
             </li>
+            <% end %>
             <li>
               <a href="/listings"> </>View Spaces</a>
             </li>
             <li>
               <a href="/booking/history"> </>History</a>
             </li>
+            <% if current_owner == nil && current_renter == nil %>
+            <li>
+              <a href="/users/new"> </>Sign Up</a></li>
+            </li>
             <li>
               <a href="/sessions/new"> </>Sign In</a>
             </li>
+            <% end %> 
+            <% if current_owner || current_renter %>
             <li>
               <a href="/sessions/delete"> </>Sign Out</a>
             </li>
+            <% end %>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
