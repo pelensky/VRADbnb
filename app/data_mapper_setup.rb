@@ -3,7 +3,6 @@ require 'dm-validations'
 require 'dm-postgres-adapter'
 
 require_relative './models/listing.rb'
-require_relative './models/user.rb'
 require_relative './models/owner.rb'
 require_relative './models/renter.rb'
 require_relative './models/book.rb'

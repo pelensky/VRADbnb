@@ -6,11 +6,11 @@ class VRADBnB < Sinatra::Base
 
   helpers do
     def current_owner
-      @current_owner ||= Owner.get(session[:user_id])
+      @current_owner ||= Owner.get(session[:owner_id])
     end
 
     def current_renter
-      @current_renter ||= Renter.get(session[:user_id])
+      @current_renter ||= Renter.get(session[:renter_id])
     end
 
     def current_listing

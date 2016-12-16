@@ -8,7 +8,7 @@ class VRADBnB < Sinatra::Base
     description = params[:description]
     listing = Listing.create(name: params[:name], description: description,
     price: params[:price], start_date: params[:start_date],
-    end_date: params[:end_date], owner_id: session[:user_id])
+    end_date: params[:end_date], owner_id: session[:owner_id])
     if listing.save
       redirect '/listings'
     else
