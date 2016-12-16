@@ -15,7 +15,6 @@ class Listing
   property :requested, Boolean, default: false
 
 
-
   belongs_to :owner
   has n, :books
 
