@@ -1,5 +1,17 @@
 VRADbnb
 *******
+Completed by Dan Pelensky(pelensky), Agata Sumowska(agata-anastazja), Russell Yeo(rus64), Veronica Sonzini(mavesonzini)
+
+Instructions
+
+Clone the repository
+Run bundle install
+Open psql and type the following
+CREATE DATABASE vradbnb_development;
+type \q to exit psql
+Run the app by typing in terminal 'rackup'
+You will have to sign up as an Owner first, post some spaces for rent, then sign up as a renter and choose the places!
+
 [![Stories in Ready](https://badge.waffle.io/pelensky/VRADbnb.png?label=ready&title=Ready)](https://waffle.io/pelensky/VRADbnb)
 *******
 Instructions: https://github.com/makersacademy/course/tree/master/makersbnb
@@ -8,6 +20,8 @@ Specs: https://github.com/makersacademy/course/blob/master/makersbnb/specificati
 
 Design Specs: https://github.com/makersacademy/course/blob/master/makersbnb/makers_bnb_images/MakersBnB_mockups.pdf
 *******
+
+The Task as described
 
 ```
 As an owner,
