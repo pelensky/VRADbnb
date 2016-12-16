@@ -1,3 +1,4 @@
+<%if current_renter%>
 <form action='/listings' method='post'>
   <label for="start_date">Available from </label>
   <input type="date"  name="start_date">
@@ -5,22 +6,25 @@
   <input type="date"  name="end_date">
   <input type="submit" name="filter" value="List Spaces">
 </form>
+<%end%>
 
 
 
-<h3>Listings</h3>
+<h3>Spaces</h3>
 <br>
 <ul id='listings' class="container">
   <%@listings.each do |listing| %>
   <li>
-    Name: <%= listing.name %> <br>
+  <h4> <%= listing.name %></h4>
     Price: £<%= listing.price %> <br>
     Available from: <%= listing.start_date %> <br>
-    Available until: <%= listing.end_date %> <br>
+    Available until: <%= listing.end_date %> <br><br>
+    <%if current_renter%>
     <form method='post' action="/booking">
       <input type="hidden" name="hidden_listing" value="<%=listing.id%>">
       <input type='submit' value='Book'>
     </form>
+    <%end%>
   </li>
   <%end%>
 

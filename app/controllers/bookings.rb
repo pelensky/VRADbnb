@@ -14,7 +14,6 @@ class VRADBnB < Sinatra::Base
 
     get '/booking/history' do
       @renter_history = Book.all(renter_id: current_renter.id)
-
       erb :history
     end
 end
