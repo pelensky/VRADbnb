@@ -21,6 +21,8 @@ class VRADBnB < Sinatra::Base
     end
 
     get '/booking/owner_history' do
+      owner_history = Listing.all(owner_id: current_owner.id)
+      @owner_requested_spaces = owner_history.all(requested: true)
       erb :owner_history
     end
 end

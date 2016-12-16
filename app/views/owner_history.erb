@@ -1,0 +1,8 @@
+<%@owner_requested_spaces.each do |listing| %>
+<li>
+  Name: <%= listing.name %>
+  Price: <%= listing.price %>
+  Available from: <%= listing.start_date %>
+  Available until: <%= listing.end_date %>
+</li>
+<%end%>
