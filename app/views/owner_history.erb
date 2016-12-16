@@ -1,15 +1,8 @@
 <%@owner_requested_spaces.each do |listing| %>
-
 <li>
-
-  Name: <%= listing.listing.name %>
-  Price: <%= listing.listing.price %>
-  Available from: <%= listing.listing.start_date %>
-  Available until: <%= listing.listing.end_date %>
-  <form method='post' action='/'>
-  <input type="submit" value="Confirm">
-
-  </form>
+  Name: <%= listing.name %>
+  Price: <%= listing.price %>
+  Available from: <%= listing.start_date %>
+  Available until: <%= listing.end_date %>
 </li>
-
 <%end%>
