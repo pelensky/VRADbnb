@@ -13,7 +13,8 @@ class Listing
   property :start_date, String, required: true
   property :end_date, String, required: true
   property :requested, Boolean, default: false
-  property :confirmed, Boolean, default: false
+
+
 
   belongs_to :owner
   has n, :books

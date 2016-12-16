@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@owner_requested_spaces.each do |listing| %>
 <h4><%= listing.name %></h4>
   Price: £<%= listing.price %>
@@ -5,4 +6,18 @@
   Available from: <%= listing.start_date %>
   <br>
   Available until: <%= listing.end_date %>
+=======
+<%@owner_bookings.each do |booking| %>
+<li>
+  Date: <%= booking.date %>
+  Name: <%= booking.listing.name %>
+  <% if booking.confirmed == false %>
+  <form method="post" action="/booking/owner_history">\
+    <input type="submit" value="Confirm">
+  </form>
+  <% else %>
+  This booking is confirmed
+  <%end%>
+</li>
+>>>>>>> 0bc8013dfdd2d532eee8c41aec4f07c0f072bf38
 <%end%>
