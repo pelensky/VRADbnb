@@ -35,9 +35,13 @@ class VRADBnB < Sinatra::Base
   end
 
   get '/listings/my_listings' do
-    @my_listings = Listing.all(owner: current_owner)
-    binding.pry
-    erb :my_listings
+    if current_owner
+      @my_listings = Listing.all(owner: current_owner)
+      erb :my_listings
+    else
+      flash[:notice] = "You are not a owner, please make an owner account"
+      redirect 'listings'
+    end
   end
 
 end
