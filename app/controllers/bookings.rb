@@ -12,7 +12,7 @@ class VRADBnB < Sinatra::Base
     end
 
     get '/booking/:renter_id' do
-      @renter_history = Book.all(renter_id: session[:user])
+      @renter_history = Book.all(renter_id: session[:user_id])
       erb :history
     end
 end
