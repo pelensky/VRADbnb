@@ -17,14 +17,14 @@ module SessionHelpers
   end
 
   def sign_in_o
-    visit '/owner/sessions/new'
+    visit '/sessions/new'
     fill_in :email_o, with: 'owner@test.com'
     fill_in :password_o, with: '12345'
     click_button "Sign in as an owner"
   end
 
   def sign_in_r
-    visit '/renter/sessions/new'
+    visit '/sessions/new'
     fill_in :email_r, with: 'renter@test.com'
     fill_in :password_r, with: '12345'
     click_button "Sign in as a renter"
