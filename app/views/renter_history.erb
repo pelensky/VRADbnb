@@ -1,16 +1,16 @@
 <!-- should have a  list of all the bookings made with the user id -->
-<%@renter_history.each do |listing| %>
-  <h4> <%= listing.listing.name %> </h4>
-  Price: £ <%= listing.listing.price %>
+<%@renter_history.each do |book| %>
+  <h4> <%= book.listing.name %> </h4>
+  Price: £ <%= book.listing.price %>
   <br>
-  Booked for: <%= listing.date %>
+  Booked for: <%= book.date %>
   <br>
-  <%if listing.listing.confirmed == true%>
+  <% if book.confirmed %>
     Confirmed
-    <%else%>
+  <%else%>
     <h6>Waiting for confirmation</h6>
     <button type="button">CANCEL BOOKING</button>
-     <%end%>
-    <br>
-    <br>
+  <%end%>
+  <br>
+  <br>
 <%end%>

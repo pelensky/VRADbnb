@@ -12,7 +12,8 @@
   Date: <%= booking.date %>
   Name: <%= booking.listing.name %>
   <% if booking.confirmed == false %>
-  <form method="post" action="/booking/owner_history">\
+  <form method="post" action="/booking/confirm">
+    <input type="hidden" name="booking_id" value="<%= booking.id %>">
     <input type="submit" value="Confirm">
   </form>
   <% else %>
