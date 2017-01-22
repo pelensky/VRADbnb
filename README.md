@@ -1,15 +1,15 @@
-VRADbnb
-*******
-[![Stories in Ready](https://badge.waffle.io/pelensky/VRADbnb.png?label=ready&title=Ready)](https://waffle.io/pelensky/VRADbnb)
-*******
-Instructions: https://github.com/makersacademy/course/tree/master/makersbnb
+#VRADBnb
+## Weekly Challenge
+### Week Six
 
-Specs: https://github.com/makersacademy/course/blob/master/makersbnb/specification_and_mockups.md
+Instructions
+-------
+* Install gems `bundle`
+* Create the following databaes `VRADbnb_development` and `VRADbnb_test`
+* Run this app in Sinatra `rackup`
+* Visit `localhost:4567` from a web browser
 
-Design Specs: https://github.com/makersacademy/course/blob/master/makersbnb/makers_bnb_images/MakersBnB_mockups.pdf
-*******
-
-```
+##User Stories
 As an owner,
 So that I can rent out my space,
 I want to sign up
